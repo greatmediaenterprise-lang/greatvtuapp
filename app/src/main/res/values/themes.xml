@@ -1,0 +1,4 @@
+<resources>
+
+    <style name="Theme.GREATVTU" parent="Theme.MaterialComponents.Light" />
+</resources>
