@@ -3,8 +3,22 @@ name: Build Great VTU Android App
 on:
   push:
     branches: [master, main]
+    paths:
+      - 'app/**'
+      - 'gradle/**'
+      - '*.gradle.kts'
+      - 'gradle.properties'
+      - 'gradlew*'
+      - '.github/workflows/android-build.yml'
   pull_request:
     branches: [master, main]
+    paths:
+      - 'app/**'
+      - 'gradle/**'
+      - '*.gradle.kts'
+      - 'gradle.properties'
+      - 'gradlew*'
+      - '.github/workflows/android-build.yml'
   workflow_dispatch:
 
 permissions:
