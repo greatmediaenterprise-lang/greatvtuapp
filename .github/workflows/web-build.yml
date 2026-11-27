@@ -1,0 +1,39 @@
+name: Build Great VTU Web App
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - 'web/**'
+      - 'vercel.json'
+      - '.github/workflows/web-build.yml'
+  pull_request:
+    branches: [master, main]
+    paths:
+      - 'web/**'
+      - 'vercel.json'
+      - '.github/workflows/web-build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Install dependencies
+        run: npm install
+      - name: Build web app
+        run: npm run build
